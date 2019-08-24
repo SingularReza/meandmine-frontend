@@ -54,7 +54,7 @@ video {
   height: 100%;
   position:absolute;
   padding:0px;
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
 .menu-wrapper {
@@ -69,8 +69,11 @@ video {
 }
 
 .menu-option {
-  margin: 30px;
-  font-size: 1.5rem;
-  font-family: 'B612', sans-serif;
+  text-align: left;
+  padding-left:35%;
+  margin: 20px;
+  font-size: 2.15rem;
+  font-family: 'Tangerine', cursive;
+  transform:scale(1.25,1);
 }
 </style>
