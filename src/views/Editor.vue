@@ -1,18 +1,27 @@
 <template>
-    <div class="editor-wrapper">
-        <div class="blog">
-            <div class="blog-editor">
-                <span>title image file upload</span>
+    <div class="editor-wrapper container">
+        <div class="blog-editor row">
+            <div class="blog-details col-xs-12 col-md-6">
+              <div>
+                Title Image
+                <input type="file" accept="image/* ref="titleimage" :change="uploadTitleImage">
+              </div>
+              <div>
                 Title
-                <input type="text"/>
+                <input type="text" v-model="title"/>
+              </div>
+              <div>
                 Subtext
-                <input type="text"/>
-                Content
-                <textarea>content here</textarea>
+                <input type="text" v-model="subtext"/>
+              </div>
+              <div>
                 Releveant files
-                <span>file upload</span>
+                <input type="file" multiple accept="image/*  ref="contentimages" :change="uploadContentImages">
+              </div>
             </div>
-            <div class="blog-preview">
+            <div class="blog-content col-xs-12 col-md-6">
+                Content
+                <textarea v-model="content">content here</textarea>
             </div>
         </div>
     </div>
@@ -25,20 +34,28 @@ export default {
   name: 'editor',
   data() {
     return {
-
+      article: {
+        id: 1234,
+        title: '',
+        titleImage: '',
+        subtext: '',
+        pretext: '',
+        tags: [],
+        content: '',
+        images: [],
+        date: new Date(),
+      },
     }
   },
   methods: {
+    uploadTitleImage() {
+      this.article.titleImage = this.$refs.titleimage.files[0];
+    },
+    uploadContentImages() {
+      this.article.images = this.$refs.contentimages.files;
+    },
     createArticle() {
-        var article = {
-            title: this.title,
-            subtext: this.subtext,
-            pretext: this.pretext,
-            tags: this.tags,
-            content: this.content,
-            date: new Date(),
-        }
-        api.createArticle(article)
+        api.createArticle(this.article)
             .then(res => console.log("created!"));
     }
   }
