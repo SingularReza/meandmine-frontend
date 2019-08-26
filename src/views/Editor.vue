@@ -2,30 +2,48 @@
     <div class="editor-wrapper container">
         <div class="blog-editor row">
             <div class="blog-details col-xs-12 col-md-6">
-              <div>
-                Title Image
-                <input type="file" accept="image/*" ref="titleimage" @change="uploadTitleImage">
-              </div>
-              <div>
-                Title
-                <input type="text" v-model="article.title"/>
-              </div>
-              <div>
-                Subtext
-                <input type="text" v-model="article.subtext"/>
-              </div>
-              <div>
-                Releveant files
-                <input type="file" multiple accept="image/*"  ref="contentimages" @change="uploadContentImages">
-              </div>
+              <table>
+                <tr>
+                    <td>Title Image</td>
+                    <td><input type="file" accept="image/*" ref="titleimage" @change="uploadTitleImage"></td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td><input type="text" v-model="article.title"/></td>
+                </tr>
+                <tr>
+                    <td>Subtext</td>
+                    <td><input type="text" v-model="article.subtext"/></td>
+                </tr>
+                <tr>
+                    <td>Pretext</td>
+                    <td><input type="text" v-model="article.pretext"/></td>
+                </tr>
+                <tr>
+                    <td>Tags</td>
+                    <td>
+                      <select multiple v-model="article.tags">
+                        <option>anime</option>
+                        <option>movies</option>
+                        <option>tech</option>
+                        <option>philosophy</option>
+                        <option>miscellaneous</option>
+                      </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Releveant files</td>
+                    <td><input type="file" multiple accept="image/*"  ref="contentimages" @change="uploadContentImages"></td>
+                </tr>
+              </table>
             </div>
             <div class="blog-content col-xs-12 col-md-6">
                 Content
                 <textarea v-model="article.content">content here</textarea>
             </div>
-        </div>
-        <button @click="createArticle"></button>
-    </div>
+        <button @click="createArticle">Submit</button>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -36,14 +54,13 @@ export default {
   data() {
     return {
       article: {
-        id: 1234,
         title: '',
         titleImage: '',
         subtext: '',
         pretext: '',
         tags: [],
         content: '',
-        images: [],
+        images: null,
         date: new Date(),
       },
     }
@@ -66,4 +83,18 @@ export default {
 </script>
 
 <style scoped>
+  table {
+    border: none;
+    text-align: left;
+  }
+
+  button {
+    height: 40px;
+    width: 80px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 80vh;
+  }
 </style>

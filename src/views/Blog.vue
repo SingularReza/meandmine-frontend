@@ -3,25 +3,47 @@
     <div class="title-card">
       <div class="card-fill"></div>
       <div class="card-title">
-        <div class="title"></div>
+        <div class="title">{{article.title}}</div>
       </div>
     </div>
     <div class="article-content">
       <div class="aricle-title"></div>
       <div class="article-pretext"></div>
-      <div class="article-text"></div>
+      <div class="article-text" v-html="article.content"></div>
     </div>
   </div>
 </template>
 
 <script>
+import api from '../services/Api.js'
+
 export default {
   name: 'blog',
   props: [
     'id'
   ],
+  data() {
+    return {
+      article: {
+        title: '',
+        titleImage: '',
+        subtext: '',
+        pretext: '',
+        tags: [],
+        content: '',
+        images: null,
+        date: new Date(),
+      }
+    }
+  },
   methods: {
 
+  },
+  beforeMount() {
+    api.getArticle(this.id)
+      .then(res => {
+        this.article = res.data
+      })
   }
 }
 </script>
