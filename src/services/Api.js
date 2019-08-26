@@ -10,8 +10,9 @@ export default {
       var articleData = new FormData();
       for (var key in article) {
         articleData.append(key, article[key]);
+        console.log(article[key])
       }
-      return Api.post('/article/create'+article.id, articleData, {headers: {'Content-Type':'multipart/form-data'}})
+      return Api.post('/article/create/'+article.id, articleData, {headers: {'Content-Type':'multipart/form-data'}})
     },
     login(credentials) {
       return Api.post('/login', credentials)
