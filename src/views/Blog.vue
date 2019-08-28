@@ -1,9 +1,12 @@
 <template>
   <div class="article">
     <div class="title-card">
-      <div class="card-fill"></div>
+      <div class="card-fill" :style="{background: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('+titleImageUrl+')'}"></div>
       <div class="card-title">
-        <div class="title">{{article.title}}</div>
+        <div class="title-wrapper row" :style="{backgroundImage: 'url('+titleImageUrl+')'}">
+          <div class="title col-xs-12 col-md-5">{{article.title}}</div>
+          <div class="sub-text col-xs-12 col-md-6">{{article.subtext}}</div>
+        </div>
       </div>
     </div>
     <div class="article-content">
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-import api from '../services/Api.js'
+import api from '../services/Api'
 
 export default {
   name: 'blog',
@@ -26,20 +29,25 @@ export default {
     return {
       article: {
         title: '',
-        titleImage: '',
+        titleImage: 'images/test.jpg',
         subtext: '',
         pretext: '',
         tags: [],
         content: '',
         images: null,
         date: new Date(),
-      }
+      },
+    }
+  },
+  computed: {
+    titleImageUrl() {
+      return ("http://localhost:3000/"+this.article.titleImage)
     }
   },
   methods: {
 
   },
-  beforeMount() {
+  created() {
     api.getArticle(this.id)
       .then(res => {
         this.article = res.data
@@ -55,7 +63,7 @@ export default {
 
   .card-fill {
     height: 60%;
-    background: lightgrey;
+    filter: blur(2px);
   }
 
   .card-title {
@@ -65,12 +73,31 @@ export default {
     top: 20%;
   }
 
-  .title {
-    background: #ababab;
+  .title-wrapper {
     width: 100%;
     height: 300px;
     border: 1px solid transparent;
     border-radius: 7px;
     box-shadow: 0 0 10px 1px #ababab;
+  }
+
+  .title {
+    height: 90%;
+    margin: 10px 20px 10px 20px;
+    border-right: 1px solid black;
+  }
+
+  .title, .sub-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+        height:max-content;
+        border: none;
+        border-bottom: 1px solid black;
+    }
   }
 </style>
