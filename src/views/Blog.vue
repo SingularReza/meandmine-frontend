@@ -47,11 +47,14 @@ export default {
   methods: {
 
   },
-  created() {
+  mounted() {
     api.getArticle(this.id)
       .then(res => {
         this.article = res.data
       })
+        var temp = this.article.titleImage
+        this.article.titleImage = "jadbkefbe"
+        this.article.titleImage = temp
   }
 }
 </script>
@@ -78,7 +81,7 @@ export default {
     height: 300px;
     border: 1px solid transparent;
     border-radius: 7px;
-    box-shadow: 0 0 10px 1px #ababab;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
   }
 
   .title {
