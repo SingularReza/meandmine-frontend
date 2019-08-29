@@ -8,12 +8,13 @@ export default {
     },
     createArticle(article) {
       var articleData = new FormData();
-      article.tags = JSON.stringify(article.tags);
+      //article.tags = JSON.stringify(article.tags);
 
       for (var key in article) {
-        if(key!='images')
+        if(key!='images' && key!='tags')
         articleData.append(key, article[key]);
       }
+      articleData.append('tags', JSON.stringify(article.tags))
       Array.from(article.images).forEach(file => {
         articleData.append('images', file);
       })

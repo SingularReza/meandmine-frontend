@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="article-content">
-      <div class="aricle-title"></div>
+      <div class="article-tags"><span class="tags">{{article.tags}}</span><hr/></div>
       <div class="article-pretext"></div>
       <div class="article-text" v-html="article.content"></div>
     </div>
@@ -52,9 +52,6 @@ export default {
       .then(res => {
         this.article = res.data
       })
-        var temp = this.article.titleImage
-        this.article.titleImage = "jadbkefbe"
-        this.article.titleImage = temp
   }
 }
 </script>
@@ -77,8 +74,7 @@ export default {
   }
 
   .title-wrapper {
-    width: 100%;
-    height: 300px;
+    height: 400px;
     border: 1px solid transparent;
     border-radius: 7px;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
@@ -96,11 +92,40 @@ export default {
     justify-content: center;
   }
 
+  .article-content {
+    padding: 0 10% 0 10%;
+  }
+
+  .article-tags {
+    position: relative;
+    width: 100%;
+  }
+
+  .tags {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    top: -12px;
+    left: 50%;
+    padding: 0 10px 0 10px;
+    transform: translateX(-50%);
+    background: #fff;
+  }
+
+  .article-text {
+    padding-top: 50px;
+  }
+
   @media (max-width: 768px) {
     .title {
         height:max-content;
+        padding: 0 10% 10px 10%;
         border: none;
         border-bottom: 1px solid black;
+    }
+
+    .title-wrapper {
+      height: 300px;
     }
   }
 </style>

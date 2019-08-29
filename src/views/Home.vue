@@ -1,8 +1,18 @@
 <template>
   <div class="home row">
-    <video class="background-video" autoplay loop>
+    <div class="site-title col-xs-12 col-md-6">Site Name</div>
+    <video class="background-video" muted autoplay loop>
       <source src="@/assets/hero.webm" type="video/webm">
     </video>
+    <div class="about-me">
+      <h2>About</h2>
+    </div>
+    <div class="latest">
+      <h2>Latest</h2>
+    </div>
+    <div class="miscellaneous">
+      <h2>list update</h2>
+    </div>
   </div>
 </template>
 
@@ -42,5 +52,24 @@ video {
 
 .home {
   margin: 0px;
+}
+
+.site-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  font-size: 4rem;
+  color: #fff;
+}
+
+ .about-me, .latest, .miscellaneous {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+}
+
+.about-me, .miscellaneous {
+  background: rgba(0, 0, 0, 0.4);
 }
 </style>

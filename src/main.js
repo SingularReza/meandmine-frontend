@@ -3,6 +3,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
+// importing icons
+import 'vue-material-design-icons/styles.css';
+
 // importing bootstrap
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
