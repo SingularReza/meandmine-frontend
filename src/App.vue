@@ -2,23 +2,26 @@
   <div id="app">
     <navbar></navbar>
     <router-view/>
+    <myfooter></myfooter>
   </div>
 </template>
 
 <script>
 import navbar from './components/Navbar.vue'
+import myfooter from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    navbar
+    navbar,
+    myfooter
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

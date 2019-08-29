@@ -1,17 +1,26 @@
 <template>
   <div class="home row">
-    <div class="site-title col-xs-12 col-md-6">Site Name</div>
+    <div class="site-title col-12 col-md-6">Site Name</div>
     <video class="background-video" muted autoplay loop>
       <source src="@/assets/hero.webm" type="video/webm">
     </video>
-    <div class="about-me">
-      <h2>About</h2>
+    <div class="about-me col-12 row">
+      <div class="about-content centered col-md-9">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <div class="about-title centered col-md-3"><h3>About</h3></div>
     </div>
-    <div class="latest">
-      <h2>Latest</h2>
+    <div class="latest col-12 row">
+      <div class="latest-title centered col-md-3"><h3>Latest</h3></div>
+      <div class="latest-content centered col-md-9">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
     </div>
-    <div class="miscellaneous">
-      <h2>list update</h2>
+    <div class="miscellaneous col-12 row">
+      <div class="miscellaneous-content centered col-md-9">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <div class="miscellaneous-title centered col-md-3"><h3>Things</h3></div>
     </div>
   </div>
 </template>
@@ -46,6 +55,12 @@ export default {
   z-index: -100;
 }
 
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 video {
   object-fit: cover;
 }
@@ -63,13 +78,24 @@ video {
   color: #fff;
 }
 
+.about-content, .latest-title, .miscellaneous-content {
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.about-content, .latest-content, .miscellaneous-content {
+  font-size: 1.25rem;
+  padding: 10%;
+}
+
  .about-me, .latest, .miscellaneous {
   width: 100%;
   height: 100vh;
   color: #fff;
+  padding: 10% 0 10% 0;
+  margin: 0px;
 }
 
 .about-me, .miscellaneous {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(20, 21, 38, .6);
 }
 </style>

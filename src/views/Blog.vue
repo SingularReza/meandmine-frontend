@@ -10,7 +10,12 @@
       </div>
     </div>
     <div class="article-content">
-      <div class="article-tags"><span class="tags">{{article.tags}}</span><hr/></div>
+      <div class="article-tags">
+        <div class="tags">
+          |&nbsp;<span v-for="(tag, index) in article.tags" :key="index">{{tag}}&nbsp;</span>|
+        </div>
+        <hr/>
+      </div>
       <div class="article-pretext"></div>
       <div class="article-text" v-html="article.content"></div>
     </div>
@@ -77,7 +82,7 @@ export default {
     height: 400px;
     border: 1px solid transparent;
     border-radius: 7px;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px 0px rgba(0,0,0,0.3);
   }
 
   .title {
@@ -110,6 +115,7 @@ export default {
     padding: 0 10px 0 10px;
     transform: translateX(-50%);
     background: #fff;
+    color: grey;
   }
 
   .article-text {

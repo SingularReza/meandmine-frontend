@@ -1,17 +1,19 @@
 <template>
   <div>
     <div class="nav-wrapper container row">
-      <div class="centered site-name row col-2">Oyasumi</div>
-      <div class="site-options row col-5">
+      <div class="centered site-name col-3 col-md-2" @click="home">Oyasumi</div>
+      <div class="site-options row col-md-5">
         <div class="centered col" v-for="(option,index) in options" :key="index">{{option}}</div>
       </div>
-      <div class="site-menu row col-1 offset-4"><magnify class="icon-2x"/><menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/></div>
+      <div class="site-menu row col-2 offset-7 col-md-1 offset-md-4"><magnify class="search-icon"/><menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/></div>
     </div>
-    <div class="side-menu" v-if="sidemenu">
-      <div class="site-options row col-5">
-        <div class="col-12" v-for="option,index in options" :key="index">{{option}}</div>
+    <transition name="slide">
+      <div class="side-menu" v-if="sidemenu">
+        <div class="side-options row">
+          <div class="col-12" v-for="option,index in options" :key="index">{{option}}</div>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -26,14 +28,19 @@ export default {
   },
   data() {
     return {
-      sidemenu: true,
+      sidemenu: false,
       options: [
         'Blog',
-        'Reviews',
+        'News',
         'Resources',
         'Works',
         'About me',
       ]
+    }
+  },
+  methods: {
+    home() {
+      this.$router.push('/')
     }
   },
 };
@@ -48,46 +55,62 @@ export default {
     color: white;
   }
 
-  .side-menu {
+  .site-name {
+    font-size: 1.75rem;
+  }
+
+  .side-menu, .slide-enter-to {
     position: fixed;
     top: 0px;
+    width: 100%;
     right: 0px;
     height: 100vh;
-    width: 70%;
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     background: #141526;
+    z-index: 100;
+  }
+
+  .side-options {
+    display: flex;
+    justify-content: center;
+    height: 30%;
   }
 
   .centered {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 
   .menu-icon {
     display: none;
     cursor: pointer;
+    z-index: 200;
   }
 
-  .material-design-icon.icon-2x {
-    height: 2em;
-    width: 2em;
+  .search-icon {
+    cursor: pointer;
+    z-index: 200;
   }
 
-  .material-design-icon.icon-2x > .material-design-icon__svg {
-    height: 2em;
-    width: 2em;
+  .slide-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-leave-active {
+    transition: all .3s ease;
+  }
+  .slide-enter, .slide-leave-to
+  {
+    transform: translateX(100%);
   }
 
   @media (max-width: 768px) {
     .nav-wrapper > .site-options {
         display: none;
-    }
-
-    .side-menu {
-      display: block;
-      z-index: 100;
     }
 
     .menu-icon {
