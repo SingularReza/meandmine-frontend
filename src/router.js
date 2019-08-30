@@ -28,5 +28,10 @@ export default new Router({
       name: 'editor',
       component: () => import('./views/Editor.vue'),
     },
+    {
+      path: '/blog',
+      name: '/blog',
+      component: () => import('./views/List.vue'),
+    }
   ],
 });

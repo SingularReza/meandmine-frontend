@@ -1,9 +1,14 @@
 <template>
   <div>
     <div class="nav-wrapper container row">
-      <div class="centered site-name col-3 col-md-2" @click="home">Oyasumi</div>
+      <div class="centered site-name col-3 col-md-2" @click="changeRoute('/')">Oyasumi</div>
       <div class="site-options row col-md-5">
-        <div class="centered col" v-for="(option,index) in options" :key="index">{{option}}</div>
+        <div
+          class="centered col"
+          v-for="(option,index) in options"
+          :key="index"
+          @click="changeRoute(option.path)"
+        >{{option.name}}</div>
       </div>
       <div class="site-menu row col-2 offset-7 col-md-1 offset-md-4"><magnify class="search-icon"/><menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/></div>
     </div>
@@ -30,17 +35,32 @@ export default {
     return {
       sidemenu: false,
       options: [
-        'Blog',
-        'News',
-        'Resources',
-        'Works',
-        'About me',
+        {
+          name: 'Blog',
+          path: '/blog'
+        },
+        {
+          name: 'News',
+          path: '/'
+        },
+        {
+          name: 'Resources',
+          path: '/'
+        },
+        {
+          name: 'Works',
+          path: '/'
+        },
+        {
+          name: 'About me',
+          path: '/'
+        },
       ]
     }
   },
   methods: {
-    home() {
-      this.$router.push('/')
+    changeRoute(path) {
+      this.$router.push(path);
     }
   },
 };

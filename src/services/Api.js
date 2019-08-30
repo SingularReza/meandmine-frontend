@@ -22,5 +22,8 @@ export default {
     },
     login(credentials) {
       return Api.post('/login', credentials)
-    }
+    },
+    /*getImage(imagepath) {
+      return Api.get('')
+    }*/
 }
