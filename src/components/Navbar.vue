@@ -15,7 +15,7 @@
     <transition name="slide">
       <div class="side-menu" v-if="sidemenu">
         <div class="side-options row">
-          <div class="col-12" v-for="option,index in options" :key="index">{{option}}</div>
+          <div class="col-12" v-for="option,index in options" :key="index"  @click="changeRoute(option.path)">{{option.name}}</div>
         </div>
       </div>
     </transition>
@@ -77,6 +77,7 @@ export default {
 
   .site-name {
     font-size: 1.75rem;
+    z-index: 200;
   }
 
   .side-menu, .slide-enter-to {
@@ -97,6 +98,7 @@ export default {
     display: flex;
     justify-content: center;
     height: 30%;
+    font-size: 1.25rem;
   }
 
   .centered {

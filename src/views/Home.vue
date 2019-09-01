@@ -12,7 +12,7 @@
     <div class="latest col-12 row">
       <div class="latest-title centered col-md-3"><h3>Latest</h3></div>
       <div class="latest-content centered col-md-9">
-        <div class="info-card" v-for="index in 3">
+        <div class="info-card">
           <card></card>
         </div>
       </div>
@@ -65,16 +65,13 @@ export default {
   height: 100vh;
   width: 100vw;
   z-index: -100;
+  object-fit: cover;
 }
 
 .centered {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-video {
-  object-fit: cover;
 }
 
 .home {
@@ -98,7 +95,7 @@ video {
   font-size: 1.25rem;
   padding: 0 10% 0 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
  .about-me, .latest, .miscellaneous {
@@ -114,17 +111,18 @@ video {
 }
 
 .info-card {
-  height: 300px;
-  width: 200px;
-  background: rgba(20, 21, 38, .7);
+  height: 90%;
+  width: 100%;
+  background: rgba(255, 245, 245);
   border-radius: 6px;
-  color: #fff;
+  color: black;
 }
 
 .update {
   width: 100%;
   height: 70px;
-  background: rgb(39, 44, 56, .8);
+  background: rgba(255, 245, 245);
+  color: #000;
 }
 
 @media (max-width: 768px) {
@@ -134,11 +132,11 @@ video {
 
     .about-content, .latest-content, .miscellaneous-content {
       font-size: 1.25rem;
-      padding: 0 5% 0 5%;
+      padding: 0;
       height: 80%;
     }
     .about-title, .latest-title, .miscellaneous-title {
-      height: 20%;
+      height: 15%;
       border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     }
 

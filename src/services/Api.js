@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let Api = axios.create({ baseURL: `http://localhost:3000/` })
+let Api = axios.create({ baseURL: `http://localhost:3300/` })
 
 export default {
     getArticle(articleID) {
@@ -23,6 +23,9 @@ export default {
     login(credentials) {
       return Api.post('/login', credentials)
     },
+    getArticleList() {
+      return Api.get('/blog/list')
+    }
     /*getImage(imagepath) {
       return Api.get('')
     }*/

@@ -12,7 +12,7 @@
     <div class="article-content">
       <div class="article-tags">
         <div class="tags">
-          |&nbsp;<span v-for="(tag, index) in article.tags" :key="index">{{tag}}&nbsp;</span>|
+          |<span v-for="(tag, index) in article.tags" :key="index">&nbsp;{{tag}}&nbsp;|</span>
         </div>
         <hr/>
       </div>
@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     titleImageUrl() {
-      return ("http://localhost:3000/"+this.article.titleImage)
+      return ("http://localhost:3300/"+this.article.titleImage)
     }
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
 
   .card-fill {
     height: 60%;
-    filter: blur(2px);
+
   }
 
   .card-title {

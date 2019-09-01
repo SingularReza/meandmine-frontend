@@ -1,14 +1,19 @@
 <template>
   <div class="card-wrapper row">
-    <div class="title-wrapper col-12">Title</div>
+    <div class="title-wrapper col-12">{{title}}</div>
     <div class="tags col-12">tags</div>
-    <div class="subtext col-12">subtext</div>
+    <div class="subtext col-12">{{text}}</div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'card'
+    name: 'card',
+    props: [
+      'title',
+      'text',
+      'tags'
+    ]
   }
 </script>
 

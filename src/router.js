@@ -19,7 +19,7 @@ export default new Router({
     },
     {
       path: '/article/:id',
-      name: 'blog',
+      name: 'article',
       component: () => import('./views/Blog.vue'),
       props: true,
     },
@@ -30,7 +30,7 @@ export default new Router({
     },
     {
       path: '/blog',
-      name: '/blog',
+      name: 'blog',
       component: () => import('./views/List.vue'),
     }
   ],
