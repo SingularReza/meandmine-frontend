@@ -41,11 +41,11 @@ export default {
         },
         {
           name: 'News',
-          path: '/'
+          path: '/news'
         },
         {
           name: 'Resources',
-          path: '/'
+          path: '/resources'
         },
         {
           name: 'Works',

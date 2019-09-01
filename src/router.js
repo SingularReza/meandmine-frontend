@@ -32,6 +32,16 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: () => import('./views/List.vue'),
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: () => import('./views/List.vue'),
+    },
+    {
+      path: '/resources',
+      name: 'resources',
+      component: () => import('./views/List.vue'),
     }
   ],
 });

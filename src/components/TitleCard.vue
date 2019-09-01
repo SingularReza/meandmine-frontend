@@ -6,7 +6,9 @@
           <div class="title col-xs-12 col-md-5">
             <h1>{{title}}</h1>
           </div>
-          <div class="sub-text col-xs-12 col-md-6">{{text}}</div>
+          <div class="sub-text col-xs-12 col-md-6">
+            <h3>{{text}}</h3>
+          </div>
         </div>
       </div>
   </div>
@@ -49,10 +51,11 @@ export default {
     box-shadow: 0 10px 20px 0px rgba(0,0,0,0.3);
     background: rgb(30,31,48);
     color: rgba(255, 255, 255, 0.8);
+    align-items: center;
   }
 
   .title {
-    height: 90%;
+    height: 70%;
     margin: 10px 20px 10px 20px;
     border-right: 1px solid rgba(255, 255, 255, 0.6);
   }

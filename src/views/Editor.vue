@@ -35,6 +35,14 @@
                     <td>Releveant files</td>
                     <td><input type="file" multiple accept="image/*"  ref="contentimages" @change="uploadContentImages"></td>
                 </tr>
+                <tr>
+                    <td>Image Links</td>
+                    <td>
+                      <ul>
+                        <li v-for="(file, index) in article.images" :key="index">{{file.name.replace(/[_-]|\s/g, "")}}</li>
+                      </ul>
+                    </td>
+                </tr>
               </table>
             </div>
             <div class="blog-content col-xs-12 col-md-6">
@@ -86,6 +94,7 @@ export default {
   table {
     border: none;
     text-align: left;
+    height: 100%;
   }
 
   button {
@@ -93,8 +102,16 @@ export default {
     width: 80px;
   }
 
+  input {
+    width: 90%;
+  }
+
   textarea {
     width: 100%;
     height: 80vh;
+  }
+
+  .blog-details {
+    display: flex;
   }
 </style>

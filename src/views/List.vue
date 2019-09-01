@@ -3,12 +3,30 @@
     <video class="background-video" muted autoplay loop>
       <source src="@/assets/hero.webm" type="video/webm">
     </video>
-    <titlecard title="Blog" text="text"></titlecard>
+    <div v-if="path=='blog'">
+      <titlecard title="Blog" text="All things that are worth an article or two"></titlecard>
+      <div class="blog-list row">
+        <div class="info-card col-3" v-for="(option, index) in list">
+          <card :key="index" :title="option.title" :text="option.subtext"></card>
+        </div>
+      </div>
+  </div>
+  <div v-else-if="path=='news'">
+    <titlecard title="Updates" text="What's happening?"></titlecard>
     <div class="blog-list row">
       <div class="info-card col-3" v-for="(option, index) in list">
         <card :key="index" :title="option.title" :text="option.subtext"></card>
       </div>
     </div>
+  </div>
+  <div v-else-if="path=='resources'">
+    <titlecard title="Resources" text="Useful Things"></titlecard>
+    <div class="blog-list row">
+      <div class="info-card col-3" v-for="(option, index) in list">
+        <card :key="index" :title="option.title" :text="option.subtext"></card>
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -28,6 +46,11 @@ export default {
       list: null
     }
   } ,
+  computed: {
+    path() {
+      return this.$route.name
+    }
+  },
   beforeMount() {
     api.getArticleList()
       .then(res => {
