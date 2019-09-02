@@ -8,9 +8,14 @@
     </video>
     <div class="about-me col-12 row">
       <div class="about-content centered col-md-9">
-        A goofy but mostly silent weeb, who is also an internet culture, history, humanities nerd and a xenophiliac.
-        Staunchly Libertarian, hates authoritarianism. I like to analyze everything too deep. People that doesn't
-        go deep into the things they like irritates me. Likes people who create things. Admires autist artists
+        A goofy but a mostly silent weeb and xenophiliac, who likes tech, internet culture, humanities, worldbuilding and everything weird.
+        Read a shit ton of books on topics ranging from grand stories set in imaginary universes to theological debates about
+        effects of Platonism on modern ethics to trashy xianxia webnovels with overpowered MCs. My usual form of entertainment is critically analysing things I gain
+        the entertainment from. Mostly listens to animusic and OSTs, but usually forays into different genres (because of osu!). Likes simulation, rpg or strategy games
+        (mobile gaming is trash by the way). I am a free interent enthusiast and always try to self host things as much as possible.
+        As far as politics is considered, stauchly classic liberal (or libertarian as known in the US).
+        <br/>
+        I am available on discord at Chandandharana #8314
       </div>
       <div class="about-title centered order-first order-md-0 col-md-3"><h3>About</h3></div>
     </div>
@@ -68,7 +73,7 @@ export default {
       flickityOptions: {
         initialIndex: 3,
         prevNextButtons: false,
-        pageDots: false,
+        pageDots: true,
         wrapAround: true
       }
     };
@@ -130,6 +135,10 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+  .miscellaneous-content {
+    margin: 0px;
+  }
 
  .about-me, .latest, .miscellaneous {
   width: 100%;
