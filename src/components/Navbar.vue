@@ -10,7 +10,10 @@
           @click="changeRoute(option.path)"
         >{{option.name}}</div>
       </div>
-      <div class="site-menu row col-2 offset-7 col-md-1 offset-md-4"><magnify class="search-icon"/><menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/></div>
+      <div class="site-menu row col-3 offset-6 col-md-1 offset-md-4">
+        <magnify class="search-icon"/>
+        <menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/>
+      </div>
     </div>
     <transition name="slide">
       <div class="side-menu" v-if="sidemenu">
@@ -73,6 +76,7 @@ export default {
     margin: 0px;
     height: 60px;
     color: white;
+    justify-content: space-around;
   }
 
   .site-name {
@@ -94,11 +98,16 @@ export default {
     z-index: 100;
   }
 
+  .site-menu {
+    justify-content: space-around;
+  }
+
   .side-options {
     display: flex;
     justify-content: center;
     height: 30%;
     font-size: 1.25rem;
+    cursor: pointer;
   }
 
   .centered {
@@ -110,23 +119,23 @@ export default {
 
   .menu-icon {
     display: none;
-    cursor: pointer;
-    z-index: 200;
   }
 
-  .search-icon {
+  .search-icon, .menu-icon {
     cursor: pointer;
     z-index: 200;
+    transform: scale(1.5, 1.5);
   }
 
   .slide-enter-active {
     transition: all .3s ease;
   }
+
   .slide-leave-active {
     transition: all .3s ease;
   }
-  .slide-enter, .slide-leave-to
-  {
+
+  .slide-enter, .slide-leave-to {
     transform: translateX(100%);
   }
 

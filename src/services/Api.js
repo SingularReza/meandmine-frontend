@@ -25,6 +25,9 @@ export default {
     },
     getArticleList() {
       return Api.get('/blog/list')
+    },
+    createUpdate(update) {
+      return Api.post('/update/create', update)
     }
     /*getImage(imagepath) {
       return Api.get('')

@@ -1,6 +1,6 @@
 <template>
     <div class="editor-wrapper container">
-        <div class="blog-editor row">
+        <div class="blog-editor row" v-if="view=='blog'">
             <div class="blog-details col-xs-12 col-md-6">
               <table>
                 <tr>
@@ -51,6 +51,22 @@
             </div>
         <button @click="createArticle">Submit</button>
       </div>
+      <div class="update-editor row" v-else-if="view=='update'">
+        <div class="col-6 offset-3">
+          Image<br/>
+          <input type="file"/>
+        </div>
+        <div class="col-6 offset-3">
+          Title<br/>
+          <input type="text"/>
+        </div>
+        <div class="col-6 offset-3">
+          Text<br/>
+          <input type="text"/>
+        </div>
+      </div>
+      <button @click="view='blog'">Blog</button>
+      <button @click="view='update'">Update</button>
   </div>
 </template>
 
@@ -71,6 +87,7 @@ export default {
         images: null,
         date: new Date(),
       },
+      view: 'blog',
     }
   },
   methods: {
@@ -113,5 +130,10 @@ export default {
 
   .blog-details {
     display: flex;
+  }
+
+  .update-editor {
+    height: calc(100vh - 200px);
+    padding: 20% 0 20% 0;
   }
 </style>

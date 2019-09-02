@@ -124,7 +124,7 @@ export default {
 
   @media (max-width: 768px) {
     .title {
-        height:max-content;
+        height: 60%;
         padding: 0 10% 10px 10%;
         border: none;
         border-bottom: 1px solid black;

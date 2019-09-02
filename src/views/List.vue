@@ -6,8 +6,8 @@
     <div v-if="path=='blog'">
       <titlecard title="Blog" text="All things that are worth an article or two"></titlecard>
       <div class="blog-list row">
-        <div class="info-card col-3" v-for="(option, index) in list">
-          <card :key="index" :title="option.title" :text="option.subtext"></card>
+        <div class="info-card col-12 col-sm-6 col-md-3" v-for="(option, index) in list" @click="pushRoute(option._id)">
+          <card :key="index" :title="option.title" :text="option.subtext" :image="option.titleImage"></card>
         </div>
       </div>
   </div>
@@ -49,6 +49,11 @@ export default {
   computed: {
     path() {
       return this.$route.name
+    },
+  },
+  methods: {
+    pushRoute(articleID) {
+      this.$router.push('/article/'+articleID)
     }
   },
   beforeMount() {
@@ -68,7 +73,7 @@ export default {
   .info-card {
     border-radius: 4px;
     box-shadow: 0 10px 20px 0px rgba(0,0,0,0.3);
-    background: #fff;
+    height: 400px;
   }
 
   .background-video {

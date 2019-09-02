@@ -1,25 +1,38 @@
 <template>
   <div class="home row">
-    <div class="site-title col-12 col-md-6">Oyasumi.me</div>
+    <div class="site-title col-12 col-md-6">
+      <div><span class="title">Oyasumi</span><span class="subtitle">Just a Blog</span></div>
+    </div>
     <video class="background-video" muted autoplay loop>
       <source src="@/assets/hero.webm" type="video/webm">
     </video>
     <div class="about-me col-12 row">
       <div class="about-content centered col-md-9">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      </div>
+        A goofy but mostly silent weeb, who is also an internet culture, history, humanities nerd and a xenophiliac.
+        Staunchly Libertarian, hates authoritarianism. I like to analyze everything too deep. People that doesn't
+        go deep into the things they like irritates me. Likes people who create things. Admires autist artists
+      </div>
       <div class="about-title centered order-first order-md-0 col-md-3"><h3>About</h3></div>
     </div>
     <div class="latest col-12 row">
       <div class="latest-title centered col-md-3"><h3>Latest</h3></div>
       <div class="latest-content centered col-md-9">
-        <div class="info-card">
-          <card></card>
+      <flickity ref="flickity" class="slider" :options="flickityOptions">
+        <div class="info-card centered carousel-cell">
+          <card title="Title 1" text="Text 1"></card>
         </div>
+        <div class="info-card centered carousel-cell">
+          <card title="Title 2" text="Text 2"></card>
+        </div>
+        <div class="info-card centered carousel-cell">
+          <card title="Title 3" text="Text 3"></card>
+        </div>
+      </flickity>
       </div>
     </div>
     <div class="miscellaneous col-12 row">
       <div class="miscellaneous-content centered col-md-9 row">
-        <div class="update col-12" v-for="index in 4" :key="index">
+        <div class="update col-12" v-for="index in 5" :key="index">
           <update></update>
         </div>
       </div>
@@ -31,12 +44,14 @@
 <script>
 import card from '../components/Card.vue'
 import update from '../components/Update.vue'
+import Flickity from 'vue-flickity';
 
 export default {
   name: 'home',
   components: {
     card,
     update,
+    Flickity
   },
   data() {
     return {
@@ -50,6 +65,12 @@ export default {
         'About',
         'And Stuff',
       ],
+      flickityOptions: {
+        initialIndex: 3,
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true
+      }
     };
   },
   methods: {
@@ -78,22 +99,34 @@ export default {
   margin: 0px;
 }
 
+.flickity-viewport {
+  height: 100% !important;
+}
 .site-title {
   display: flex;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 60px);
-  font-size: 4rem;
   color: #fff;
+}
+
+.subtitle {
+  font-size: 1.25rem;
 }
 
 .about-content, .latest-title, .miscellaneous-content {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.about-content, .latest-content, .miscellaneous-content {
+.about-content, .miscellaneous-content {
   font-size: 1.25rem;
   padding: 0 10% 0 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.latest-content {
+  font-size: 1.25rem;
   display: flex;
   justify-content: center;
 }
@@ -106,23 +139,34 @@ export default {
   margin: 0px;
 }
 
+.title {
+  display: block;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.7);
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
 .about-me, .miscellaneous {
   background: rgba(20, 21, 38, .6);
 }
 
 .info-card {
-  height: 90%;
+  height: 100%;
   width: 100%;
-  background: rgba(255, 245, 245);
-  border-radius: 6px;
-  color: black;
+  padding: 4%;
+}
+
+.slider {
+  height: 100%;
+  width: 100%;
 }
 
 .update {
   width: 100%;
-  height: 70px;
-  background: rgba(255, 245, 245);
-  color: #000;
+  height: max-content;
+  background: rgba(20, 21, 38, 1);
+  color: #fff;
+  border-radius: 4px;
 }
 
 @media (max-width: 768px) {
