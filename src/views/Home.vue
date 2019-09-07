@@ -38,7 +38,7 @@
     <div class="miscellaneous col-12 row">
       <div class="miscellaneous-content centered col-md-9 row">
         <div class="update col-12" v-for="index in 5" :key="index">
-          <update></update>
+          <update :date="new Date()"></update>
         </div>
       </div>
       <div class="miscellaneous-title centered order-first order-md-0 col-md-3"><h3>Things</h3></div>
@@ -73,8 +73,9 @@ export default {
       flickityOptions: {
         initialIndex: 3,
         prevNextButtons: false,
-        pageDots: true,
-        wrapAround: true
+        pageDots: false,
+        wrapAround: true,
+        autoPlay: true
       }
     };
   },
@@ -183,6 +184,11 @@ export default {
       border: none;
     }
 
+    .about-me, .latest, .miscellaneous {
+      font-size: 1.25rem;
+      padding: 0 10% 0 10%;
+    }
+
     .about-content, .latest-content, .miscellaneous-content {
       font-size: 1.25rem;
       padding: 0;
@@ -192,10 +198,11 @@ export default {
       height: 15%;
       border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     }
+}
 
-    .about-me, .latest, .miscellaneous {
-      font-size: 1.25rem;
-      padding: 0 10% 0 10%;
+@media (max-width: 576px) {
+  .about-content, .latest-content, .miscellaneous-content {
+      font-size: 1rem;
     }
 }
 </style>

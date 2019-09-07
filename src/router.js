@@ -42,6 +42,11 @@ export default new Router({
       path: '/resources',
       name: 'resources',
       component: () => import('./views/List.vue'),
+    },
+    {
+      path: '/works',
+      name: 'works',
+      component: () => import('./views/List.vue'),
     }
   ],
 });

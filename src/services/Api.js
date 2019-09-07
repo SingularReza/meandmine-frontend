@@ -28,7 +28,7 @@ export default {
     },
     createUpdate(update) {
       return Api.post('/update/create', update)
-    }
+    },
     /*getImage(imagepath) {
       return Api.get('')
     }*/

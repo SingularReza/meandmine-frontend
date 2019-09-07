@@ -27,6 +27,14 @@
       </div>
     </div>
   </div>
+  <div v-else-if="path=='works'">
+    <titlecard title="Works" text="Feels good to create, heh?"></titlecard>
+    <div class="blog-list row">
+      <div class="info-card col-3" v-for="(option, index) in list">
+        <card :key="index" :title="option.title" :text="option.subtext"></card>
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 

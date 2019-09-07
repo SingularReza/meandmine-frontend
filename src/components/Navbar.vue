@@ -52,7 +52,7 @@ export default {
         },
         {
           name: 'Works',
-          path: '/'
+          path: '/works'
         },
         {
           name: 'About me',
@@ -64,6 +64,7 @@ export default {
   methods: {
     changeRoute(path) {
       this.$router.push(path);
+      this.sidemenu = false;
     }
   },
 };

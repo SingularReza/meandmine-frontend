@@ -8,7 +8,7 @@
 
 <script>
 import navbar from './components/Navbar.vue'
-import myfooter from './components/Footer.vue'
+import myfooter from './components/Myfooter.vue'
 
 export default {
   name: 'App',
