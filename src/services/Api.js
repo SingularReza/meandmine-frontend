@@ -27,9 +27,17 @@ export default {
       return Api.get('/blog/list')
     },
     createUpdate(update) {
-      return Api.post('/update/create', update)
+      var updateData = new FormData();
+      for(var key in update) {
+        updateData.append(key, update[key]);
+      }
+      return Api.post('/update/create', updateData, { headers: { 'Content-Type': 'multipart/form-data' } })
     },
-    /*getImage(imagepath) {
-      return Api.get('')
-    }*/
+    getLatestUpdates() {
+      return Api.get('/updates/latest')
+    },
+    getLatestArticles() {
+      return Api.get('/articles/latest')
+    },
+
 }

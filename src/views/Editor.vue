@@ -54,16 +54,17 @@
       <div class="update-editor row" v-else-if="view=='update'">
         <div class="col-6 offset-3">
           Image<br/>
-          <input type="file"/>
+          <input type="file" ref="updateimage"/>
         </div>
         <div class="col-6 offset-3">
           Title<br/>
-          <input type="text"/>
+          <input type="text" v-model="update.title"/>
         </div>
         <div class="col-6 offset-3">
           Text<br/>
-          <input type="text"/>
+          <input type="text" v-model="update.text"/>
         </div>
+        <button @click="submitUpdate">submit</button>
       </div>
       <button @click="view='blog'">Blog</button>
       <button @click="view='update'">Update</button>
@@ -87,6 +88,12 @@ export default {
         images: null,
         date: new Date(),
       },
+      update: {
+        title: '',
+        text: '',
+        date: Date,
+        image: null,
+      },
       view: 'blog',
     }
   },
@@ -102,6 +109,12 @@ export default {
     createArticle() {
         api.createArticle(this.article)
             .then(res => console.log("created!"));
+    },
+    submitUpdate() {
+      this.update.image = this.$refs.updateimage.files[0];
+      this.update.date = new Date();
+      api.createUpdate(this.update)
+        .then(res => console.log("udate submitted!"));
     }
   }
 };

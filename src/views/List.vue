@@ -6,7 +6,7 @@
     <div v-if="path=='blog'">
       <titlecard title="Blog" text="All things that are worth an article or two"></titlecard>
       <div class="blog-list row">
-        <div class="info-card col-12 col-sm-6 col-md-3" v-for="(option, index) in list" @click="pushRoute(option._id)">
+        <div class="info-card col-12 col-sm-6 col-md-3" v-for="(option, index) in list" @click="pushRoute(option._id)" :key="index">
           <card :key="index" :title="option.title" :text="option.subtext" :image="option.titleImage"></card>
         </div>
       </div>
@@ -14,7 +14,7 @@
   <div v-else-if="path=='news'">
     <titlecard title="Updates" text="What's happening?"></titlecard>
     <div class="blog-list row">
-      <div class="info-card col-3" v-for="(option, index) in list">
+      <div class="info-card col-3" v-for="(option, index) in list" :key="index">
         <card :key="index" :title="option.title" :text="option.subtext"></card>
       </div>
     </div>
@@ -22,7 +22,7 @@
   <div v-else-if="path=='resources'">
     <titlecard title="Resources" text="Useful Things"></titlecard>
     <div class="blog-list row">
-      <div class="info-card col-3" v-for="(option, index) in list">
+      <div class="info-card col-3" v-for="(option, index) in list":key="index">
         <card :key="index" :title="option.title" :text="option.subtext"></card>
       </div>
     </div>
@@ -30,7 +30,7 @@
   <div v-else-if="path=='works'">
     <titlecard title="Works" text="Feels good to create, heh?"></titlecard>
     <div class="blog-list row">
-      <div class="info-card col-3" v-for="(option, index) in list">
+      <div class="info-card col-3" v-for="(option, index) in list" :key="index">
         <card :key="index" :title="option.title" :text="option.subtext"></card>
       </div>
     </div>

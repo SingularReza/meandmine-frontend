@@ -22,23 +22,17 @@
     <div class="latest col-12 row">
       <div class="latest-title centered col-md-3"><h3>Latest</h3></div>
       <div class="latest-content centered col-md-9">
-      <flickity ref="flickity" class="slider" :options="flickityOptions">
-        <div class="info-card centered carousel-cell">
-          <card title="Title 1" text="Text 1"></card>
-        </div>
-        <div class="info-card centered carousel-cell">
-          <card title="Title 2" text="Text 2"></card>
-        </div>
-        <div class="info-card centered carousel-cell">
-          <card title="Title 3" text="Text 3"></card>
+      <flickity ref="flickity" v-if="Object.keys(latestArticles).length > 0" class="slider" :options="flickityOptions">
+        <div class="info-card centered carousel-cell" v-for="(article, index) in latestArticles" :key="index">
+          <card :title="article.title" :image="article.titleImage" :tags="article.tags" :text="article.pretext"></card>
         </div>
       </flickity>
       </div>
     </div>
     <div class="miscellaneous col-12 row">
       <div class="miscellaneous-content centered col-md-9 row">
-        <div class="update col-12" v-for="index in 5" :key="index">
-          <update :date="new Date()"></update>
+        <div class="update col-12" v-for="(update, index) in latestUpdates" :key="index">
+          <update :update-data="update"></update>
         </div>
       </div>
       <div class="miscellaneous-title centered order-first order-md-0 col-md-3"><h3>Things</h3></div>
@@ -47,6 +41,7 @@
 </template>
 
 <script>
+import api from '../services/Api'
 import card from '../components/Card.vue'
 import update from '../components/Update.vue'
 import Flickity from 'vue-flickity';
@@ -60,27 +55,31 @@ export default {
   },
   data() {
     return {
-      options: [
-        'Anime',
-        'Movies',
-        'Music',
-        'Games',
-        'Projects',
-        'Things',
-        'About',
-        'And Stuff',
-      ],
       flickityOptions: {
         initialIndex: 3,
         prevNextButtons: false,
         pageDots: false,
         wrapAround: true,
         autoPlay: true
-      }
-    };
+      },
+      latestArticles: [],
+      latestUpdates: [],
+    }
   },
   methods: {
   },
+  mounted() {
+    api.getLatestUpdates()
+      .then(res => {
+        this.latestUpdates = res.data;
+      })
+  },
+  beforeMount() {
+    api.getLatestArticles()
+      .then(res => {
+        this.latestArticles = res.data;
+      });
+  }
 };
 </script>
 
@@ -177,6 +176,7 @@ export default {
   background: rgba(20, 21, 38, 1);
   color: #fff;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {

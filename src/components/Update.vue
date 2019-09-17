@@ -5,10 +5,10 @@
     </div>
     <div class="content-wrapper col-10">
       <div class="title-wrapper">
-        <span class="title">Title</span>
-        <span class="date">{{timeSince(date)}} ago</span>
+        <span class="title">{{updateData.title}}</span>
+        <span class="date">{{timeSince(new Date(updateData.date))}} ago</span>
       </div>
-      <div class="text-wrapper">subtext</div>
+      <div class="text-wrapper">{{updateData.text}}</div>
     </div>
   </div>
 </template>
@@ -17,14 +17,11 @@
   export default {
     name: 'update',
     props: [
-      'title',
-      'date',
-      'text',
-      'image'
+      'updateData'
     ],
     computed: {
       imageUrl() {
-        return ("http://localhost:3300/"+this.image)
+        return ("http://localhost:3300/"+this.updateData.image)
       }
     },
     methods: {
@@ -79,11 +76,18 @@
     padding-bottom: 5px;
   }
 
+  .text-wrapper {
+    font-weight: lighter;
+  }
+
   .image-wrapper {
     background: #fff;
+    padding: 0px;
+    object-fit: cover;
+    overflow: hidden;
   }
 
   .updateImage {
-    object-fit: cover;
+    height: 90px;
   }
 </style>
