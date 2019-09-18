@@ -21,7 +21,7 @@
     ],
     computed: {
       imageUrl() {
-        return ("http://localhost:3300/"+this.updateData.image)
+        return ("http://127.0.0.1:3300/"+this.updateData.image)
       }
     },
     methods: {

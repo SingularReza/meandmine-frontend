@@ -22,7 +22,7 @@
     ],
     computed: {
       cardImage() {
-        return ('http://localhost:3300/'+this.image)
+        return ('http://1227.0.0.1:3300/'+this.image)
       }
     }
   }

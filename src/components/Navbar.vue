@@ -18,7 +18,7 @@
     <transition name="slide">
       <div class="side-menu" v-if="sidemenu">
         <div class="side-options row">
-          <div class="col-12" v-for="option,index in options" :key="index"  @click="changeRoute(option.path)">{{option.name}}</div>
+          <div class="col-12" v-for="(option,index) in options" :key="index"  @click="changeRoute(option.path)">{{option.name}}</div>
         </div>
       </div>
     </transition>
@@ -56,7 +56,7 @@ export default {
         },
         {
           name: 'About me',
-          path: '/'
+          path: '/about#about-me'
         },
       ]
     }

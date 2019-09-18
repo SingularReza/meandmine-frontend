@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import('./views/About.vue'),
+      component: Home,
     },
     {
       path: '/article/:id',
@@ -47,6 +47,19 @@ export default new Router({
       path: '/works',
       name: 'works',
       component: () => import('./views/List.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if(to.hash) {
+      var position = {
+        selector: to.hash,
+      }
+      return position
+    }
+  }
+
 });

@@ -6,7 +6,7 @@
     <video class="background-video" muted autoplay loop>
       <source src="@/assets/hero.webm" type="video/webm">
     </video>
-    <div class="about-me col-12 row">
+    <div class="about-me col-12 row" id="about-me">
       <div class="about-content centered col-md-9">
         A goofy but a mostly silent weeb and xenophiliac, who likes tech, internet culture, humanities, worldbuilding and everything weird.
         Read a shit ton of books on topics ranging from grand stories set in imaginary universes to theological debates about
@@ -68,16 +68,14 @@ export default {
   },
   methods: {
   },
-  mounted() {
-    api.getLatestUpdates()
-      .then(res => {
-        this.latestUpdates = res.data;
-      })
-  },
-  beforeMount() {
+  created() {
     api.getLatestArticles()
       .then(res => {
         this.latestArticles = res.data;
+      });
+    api.getLatestUpdates()
+      .then(res => {
+        this.latestUpdates = res.data;
       });
   }
 };

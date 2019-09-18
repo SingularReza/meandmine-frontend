@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     titleImageUrl() {
-      return ("http://localhost:3300/"+this.article.titleImage)
+      return ("http://127.0.0.1:3300/"+this.article.titleImage)
     }
   },
   methods: {
