@@ -38,10 +38,10 @@
           return parseInt(secondsPast/3600) + ' h';
         }
         if(secondsPast > 86400){
-            day = timeStamp.getDate();
-            month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ","");
-            year = timeStamp.getFullYear() == now.getFullYear() ? "" :  " "+timeStamp.getFullYear();
-            return day + " " + month + year;
+          var day = timeStamp.getDate();
+          var month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ","");
+          var year = timeStamp.getFullYear() == now.getFullYear() ? "" :  " "+timeStamp.getFullYear();
+          return day + " " + month + year;
         }
       }
     }

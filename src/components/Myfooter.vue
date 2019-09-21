@@ -16,6 +16,7 @@ export default {
     height: 120px;
     background: #141526;
     width: 100%;
+    color: grey;
   }
 
   .centered {

@@ -1,12 +1,16 @@
 <template>
   <div class="card-wrapper row">
-    <div class="title-wrapper col-12" :style="{background: 'url('+cardImage+')'}">{{title}}</div>
+    <div class="col-1 image-wrapper" :style="{background: 'url('+cardImage+')'}">
+    </div>
+    <div class="col row content-wrapper">
+    <div class="title-wrapper col-12">{{title}}</div>
     <div class="tags-wrapper col-12">
       <div class="tags">
           |<span v-for="(tag, index) in tags" :key="index">&nbsp;{{tag}}&nbsp;|</span>
       </div>
     </div>
     <div class="subtext col-12">{{text}}</div>
+    </div>
   </div>
 </template>
 
@@ -22,7 +26,7 @@
     ],
     computed: {
       cardImage() {
-        return ('http://1227.0.0.1:3300/'+this.image)
+        return ('http://127.0.0.1:3300/'+this.image)
       }
     }
   }
@@ -41,20 +45,27 @@
   }
 
   .title-wrapper {
-    height: 50%;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.6);
   }
 
   .tags-wrapper {
-    height: 10%;
+    height: 20%;
   }
 
   .subtext {
-    height: 40%;
   }
 
   .title-wrapper, .tags-wrapper, .subtext {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .image-wrapper, .content-wrapper {
+    height: 100%;
+  }
+
+  .content-wrapper {
+    padding: 0 10% 0 10%;
   }
 </style>

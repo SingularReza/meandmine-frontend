@@ -13,9 +13,9 @@
         effects of Platonism on modern ethics to trashy xianxia webnovels with overpowered MCs. My usual form of entertainment is critically analysing things I gain
         the entertainment from. Mostly listens to animusic and OSTs, but usually forays into different genres (because of osu!). Likes simulation, rpg or strategy games
         (mobile gaming is trash by the way). I am a free interent enthusiast and always try to self host things as much as possible.
-        As far as politics is considered, stauchly classic liberal (or libertarian as known in the US).
-        <br/>
-        I am available on discord at Chandandharana #8314
+        As far as politics is considered, stauchly classical liberal (or libertarian as known in the US).
+        I am available on discord at Chandandharana #8314 and on anilist as the same.
+        If you see the name 'Chandandharana' anywhere , that's probably me
       </div>
       <div class="about-title centered order-first order-md-0 col-md-3"><h3>About</h3></div>
     </div>
@@ -200,7 +200,7 @@ export default {
 
 @media (max-width: 576px) {
   .about-content, .latest-content, .miscellaneous-content {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 }
 </style>

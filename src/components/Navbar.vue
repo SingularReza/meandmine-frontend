@@ -1,15 +1,16 @@
 <template>
   <div>
     <div class="nav-wrapper container row">
-      <div class="centered site-name col-3 col-md-2" @click="changeRoute('/')">Oyasumi</div>
-      <div class="site-options row col-md-5">
-        <div
-          class="centered col"
-          v-for="(option,index) in options"
-          :key="index"
-          @click="changeRoute(option.path)"
-        >{{option.name}}</div>
-      </div>
+        <div class="centered site-name col-3 col-md-2" @click="changeRoute('/')">Oyasumi</div>
+        <div class="site-options row col-md-5">
+          <div
+            class="centered col"
+            v-for="(option,index) in options"
+            :key="index"
+            @click="changeRoute(option.path)"
+          >{{option.name}}</div>
+        </div>
+      <!--div class="col-3 col-md-2" v-if="path=='home'"></div-->
       <div class="site-menu row col-3 offset-6 col-md-1 offset-md-4">
         <magnify class="search-icon"/>
         <menu-icon class="menu-icon" @click="sidemenu = !sidemenu"/>
@@ -61,6 +62,11 @@ export default {
       ]
     }
   },
+  computed: {
+    path() {
+      return this.$route.name
+    },
+  },
   methods: {
     changeRoute(path) {
       this.$router.push(path);
@@ -109,6 +115,7 @@ export default {
     height: 30%;
     font-size: 1.25rem;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
   }
 
   .centered {
@@ -141,7 +148,7 @@ export default {
   }
 
   @media (max-width: 768px) {
-    .nav-wrapper > .site-options {
+    .nav-wrapper .site-options {
         display: none;
     }
 
