@@ -39,5 +39,8 @@ export default {
     getLatestArticles() {
       return Api.get('/articles/latest')
     },
+    test() {
+      return Api.get('/api/fansubs/32281')
+    }
 
 }

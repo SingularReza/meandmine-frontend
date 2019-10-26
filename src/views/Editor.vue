@@ -68,6 +68,7 @@
       </div>
       <button @click="view='blog'">Blog</button>
       <button @click="view='update'">Update</button>
+      <button @click="testfunc">Test</button>
   </div>
 </template>
 
@@ -115,6 +116,10 @@ export default {
       this.update.date = new Date();
       api.createUpdate(this.update)
         .then(res => console.log("udate submitted!"));
+    },
+    testfunc() {
+      api.test()
+        .then(res => console.log(res.data));
     }
   }
 };

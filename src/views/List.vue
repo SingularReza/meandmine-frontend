@@ -14,15 +14,18 @@
   <div v-else-if="path=='news'">
     <titlecard title="Updates" text="What's happening?"></titlecard>
     <div class="blog-list row">
-      <div class="info-card col-3" v-for="(option, index) in list" :key="index">
-        <card :key="index" :title="option.title" :text="option.subtext"></card>
+      <div class="update-section col-lg-6 col-12 order-12 order-lg-1">
+         <div class="update col-12" v-for="(update, index) in latestUpdates" :key="index">
+          <update :update-data="update"></update>
+        </div>
       </div>
+      <div class="in-progress col-lg-6 col-12 order-1 order-lg-12">progress</div>
     </div>
   </div>
   <div v-else-if="path=='resources'">
     <titlecard title="Resources" text="Useful Things"></titlecard>
     <div class="blog-list row">
-      <div class="info-card col-3" v-for="(option, index) in list":key="index">
+      <div class="info-card col-3" v-for="(option, index) in list" :key="index">
         <card :key="index" :title="option.title" :text="option.subtext"></card>
       </div>
     </div>
@@ -42,16 +45,19 @@
 import api from '../services/Api'
 import card from '../components/Card.vue'
 import titlecard from '../components/TitleCard.vue'
+import update from '../components/Update.vue'
 
 export default {
   name: 'list',
   components: {
     card,
-    titlecard
+    titlecard,
+    update
   },
   data() {
     return {
-      list: null
+      list: null,
+      latestUpdates: []
     }
   } ,
   computed: {
@@ -68,7 +74,11 @@ export default {
     api.getArticleList()
       .then(res => {
         this.list = res.data
-      })
+      });
+    api.getLatestUpdates()
+      .then(res => {
+        this.latestUpdates = res.data;
+      });
   }
 }
 </script>
@@ -96,5 +106,13 @@ export default {
 
   .view-wrapper {
     overflow-x: hidden;
+  }
+
+  .update-section {
+    padding: 30px;
+  }
+
+  .update {
+    background: rgba(20, 21, 38, 1);
   }
 </style>
