@@ -39,8 +39,11 @@ export default {
     getLatestArticles() {
       return Api.get('/articles/latest')
     },
-    test() {
-      return Api.get('/api/fansubs/32281')
-    }
-
+   getCurrentWatching(handleData) {
+      Api.get('/api/watching')
+        .then(res => {
+          return res.data.data.MediaListCollection.lists[0].entries
+        })
+        .then(handleData)
+   }
 }

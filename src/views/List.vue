@@ -22,8 +22,11 @@
       </div>
       <div class="in-progress col-lg-6 col-12 order-1 order-lg-12">
         <h4>Current</h4>
-        <div class="watching col-12">
-          <h5>Watching</h5>
+        <div class="watching col-12 row">
+          <div class="col-12">
+            <h5>Watching</h5>
+          </div>
+          <smallcard class="watching-card" v-for="(media, index) in watching" :key="index" :title="media.media.title.romaji" :image="media.media.coverImage.large"></smallcard>
         </div>
         <div class="reading col-12">
           <h5>Reading</h5>
@@ -59,6 +62,7 @@
 <script>
 import api from '../services/Api'
 import card from '../components/Card.vue'
+import smallcard from '../components/Smallcard.vue'
 import titlecard from '../components/TitleCard.vue'
 import update from '../components/Update.vue'
 
@@ -67,12 +71,14 @@ export default {
   components: {
     card,
     titlecard,
-    update
+    update,
+    smallcard
   },
   data() {
     return {
       list: null,
-      latestUpdates: []
+      latestUpdates: [],
+      watching: []
     }
   } ,
   computed: {
@@ -94,6 +100,11 @@ export default {
       .then(res => {
         this.latestUpdates = res.data;
       });
+    api.getCurrentWatching(
+      res => {
+        this.watching = res
+      }
+    )
   }
 }
 </script>
@@ -145,5 +156,15 @@ export default {
     color: rgba(255, 255, 255, 0.7);
     padding: 10px;
     text-align:left;
+  }
+
+  h4 {
+    text-align:left;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .watching-card {
+    padding: 2px;
   }
 </style>
