@@ -1,18 +1,16 @@
 <template>
   <div class="card-wrapper row">
-    <div class="col-1 image-wrapper" :style="{background: 'url('+cardImage+')'}">
-    </div>
-    <div class="col row content-wrapper">
-      <div class="title-wrapper col-12 row">
+      <div class="title-wrapper col-12 row" :style="{background: 'url('+cardImage+')'}">
+        <div class="background-wrapper">
         <h4>{{title}}</h4>
-      </div>
-      <div class="tags-wrapper col-12">
-        <div class="tags">
-          |<span v-for="(tag, index) in tags" :key="index">&nbsp;{{tag}}&nbsp;|</span>
+        <div class="tags-wrapper col-12">
+          <div class="tags">
+            .<span v-for="(tag, index) in tags" :key="index">&nbsp;{{tag}}&nbsp;.</span>
+          </div>
+        </div>
         </div>
       </div>
       <div class="subtext col-12">{{text}}</div>
-    </div>
   </div>
 </template>
 
@@ -41,20 +39,16 @@
     font-size: 1rem;
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center;
     background: rgba(20, 21, 38, .6);
     color: #fff;
     overflow: hidden;
+    background: rgba(20, 21, 38, 0.7);
   }
 
   .title-wrapper {
-    padding: 10%;
-  }
-
-  .tags-wrapper {
-    position: relative;
-    bottom: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    margin: 0px;
+    padding: 0px;
   }
 
   .title-wrapper, .tags-wrapper, .subtext {
@@ -64,16 +58,20 @@
     height: max-content;
   }
 
-  .image-wrapper, .content-wrapper {
-    height: 100%;
-  }
-
-  .content-wrapper {
-    padding: 0 10% 0 10%;
-  }
-
   .lines {
     height: 1px;
     background: rgba(255, 255, 255, 0.6);
   }
+
+  h4 {
+    padding: 10% 0 5% 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+
+  .background-wrapper {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
 </style>

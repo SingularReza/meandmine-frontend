@@ -15,11 +15,26 @@
     <titlecard title="Updates" text="What's happening?"></titlecard>
     <div class="blog-list row">
       <div class="update-section col-lg-6 col-12 order-12 order-lg-1">
-         <div class="update col-12" v-for="(update, index) in latestUpdates" :key="index">
+        <h4>Updates</h4>
+        <div class="update col-12" v-for="(update, index) in latestUpdates" :key="index">
           <update :update-data="update"></update>
         </div>
       </div>
-      <div class="in-progress col-lg-6 col-12 order-1 order-lg-12">progress</div>
+      <div class="in-progress col-lg-6 col-12 order-1 order-lg-12">
+        <h4>Current</h4>
+        <div class="watching col-12">
+          <h5>Watching</h5>
+        </div>
+        <div class="reading col-12">
+          <h5>Reading</h5>
+        </div>
+        <div class="listening col-12">
+          <h5>Listening</h5>
+        </div>
+        <div class="working col-12">
+          <h5>Working</h5>
+        </div>
+      </div>
     </div>
   </div>
   <div v-else-if="path=='resources'">
@@ -114,5 +129,21 @@ export default {
 
   .update {
     background: rgba(20, 21, 38, 1);
+  }
+
+  .in-progress {
+    padding: 30px;
+  }
+
+  .watching, .reading, .listening, .working {
+    min-height: 100px;
+    margin: 10px 0px 10px 0px;
+    background: rgba(20, 21, 38, 1);
+  }
+
+  h5 {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    text-align:left;
   }
 </style>
