@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let Api = axios.create({ baseURL: `http://127.0.0.1:3300/` })
+let Api = axios.create({ baseURL: `http://localhost:3300` })
 
 export default {
     getArticle(articleID) {
@@ -45,5 +45,12 @@ export default {
           return res.data.data.MediaListCollection.lists[0].entries
         })
         .then(handleData)
-   }
+   },
+  getCurrentReading(handleData) {
+    Api.get('/api/reading')
+      .then(res => {
+        return res.data.data.MediaListCollection.lists[0].entries
+      })
+      .then(handleData)
+  }
 }

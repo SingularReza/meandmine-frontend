@@ -24,7 +24,7 @@
       <div class="latest-content centered col-md-9">
       <flickity ref="flickity" v-if="Object.keys(latestArticles).length > 0" class="slider" :options="flickityOptions">
         <div class="info-card centered carousel-cell" v-for="(article, index) in latestArticles" :key="index">
-          <card :title="article.title" :image="article.titleImage" :tags="article.tags" :text="article.pretext" bigcard></card>
+          <card :title="article.title" :image="article.titleImage" :tags="article.tags" :text="article.pretext" :link="article._id"></card>
         </div>
       </flickity>
       </div>

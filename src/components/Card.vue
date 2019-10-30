@@ -11,6 +11,7 @@
         </div>
       </div>
       <div class="subtext col-12">{{text}}</div>
+      <div class="link"><a :href="'http://localhost:8080/article/'+link">Go to article -></a></div>
   </div>
 </template>
 
@@ -23,7 +24,7 @@
       'tags',
       'image',
       'date',
-      'bigcard'
+      'link'
     ],
     computed: {
       cardImage() {
@@ -38,6 +39,7 @@
     border-radius: 4px;
     font-size: 1rem;
     height: 100%;
+    position: relative;
     width: 100%;
     background: rgba(20, 21, 38, .6);
     color: #fff;
@@ -74,4 +76,10 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
 }
+
+  .link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
 </style>

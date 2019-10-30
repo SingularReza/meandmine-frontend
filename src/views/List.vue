@@ -16,6 +16,10 @@
     <div class="blog-list row">
       <div class="update-section col-lg-6 col-12 order-12 order-lg-1">
         <h4>Updates</h4>
+        <div class="add-update">
+          <h6>Want to suggest me something?</h6>
+          <textarea></textarea>
+        </div>
         <div class="update col-12" v-for="(update, index) in latestUpdates" :key="index">
           <update :update-data="update"></update>
         </div>
@@ -28,8 +32,11 @@
           </div>
           <smallcard class="watching-card" v-for="(media, index) in watching" :key="index" :title="media.media.title.romaji" :image="media.media.coverImage.large"></smallcard>
         </div>
-        <div class="reading col-12">
+        <div class="reading col-12 row">
+          <div class="col-12">
           <h5>Reading</h5>
+          </div>
+          <smallcard class="reading-card" v-for="(media, index) in reading" :key="index" :title="media.media.title.romaji" :image="media.media.coverImage.large"></smallcard>
         </div>
         <div class="listening col-12">
           <h5>Listening</h5>
@@ -78,7 +85,8 @@ export default {
     return {
       list: null,
       latestUpdates: [],
-      watching: []
+      watching: [],
+      reading: []
     }
   } ,
   computed: {
@@ -104,7 +112,12 @@ export default {
       res => {
         this.watching = res
       }
-    )
+    );
+    api.getCurrentReading(
+      res => {
+        this.reading = res
+      }
+    );
   }
 }
 </script>
@@ -149,6 +162,7 @@ export default {
   .watching, .reading, .listening, .working {
     min-height: 100px;
     margin: 10px 0px 10px 0px;
+    padding-bottom: 20px;
     background: rgba(20, 21, 38, 1);
   }
 
@@ -161,10 +175,37 @@ export default {
   h4 {
     text-align:left;
     color: white;
+    width: 50%;
+    margin-bottom: 20px;
+    padding: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  .watching-card {
-    padding: 2px;
+  .watching-card, .reading-card {
+    margin: 10px;
+  }
+
+  .add-update {
+    background: rgba(20, 21, 38, 1);
+    margin-bottom: 20px;
+    border: 1 px solid transparent;
+    border-radius: 5px;
+    height: 200px;
+    padding: 30px;
+  }
+
+  h6 {
+    padding: 0 0 10px 0;
+    text-align: left;
+    color: rgba(61, 180, 242, 0.8);
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  }
+
+  textarea {
+    border: none;
+    border-radius: 5px;
+    background: rgb(30,31,48);
+    width: 100%;
+    height: 70%;
   }
 </style>
